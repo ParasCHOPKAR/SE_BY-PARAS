@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Specific Engineers</title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #eaeaea;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* LOADER */
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh; width: 100%;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: inset 0 0 40px #007aff33;
+    }
+  #loader img {
+  width: 160px;
+  margin-bottom: 30px;
+  animation: pulse 1.8s ease-in-out infinite;
+  border-radius: 12px;
+
+  /* Multi-color neon-glow effect */
+  filter: 
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 12px rgba(0, 255, 255, 0.6))     /* Cyan pop */
+    drop-shadow(0 0 20px rgba(138, 43, 226, 0.5))     /* Soft purple depth */
+    drop-shadow(0 0 40px rgba(255, 255, 255, 0.8))    /* White radiant edge */
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.6));   /* Wide outer aura */
+}
+
+    #loader h1 {
+      color: #007aff;
+      font-size: 2.2rem;
+      font-weight: 700;
+      animation: glowUp 2s ease-in-out forwards;
+      margin-bottom: 15px;
+    }
+    #loader p {
+      color: #aaa;
+      font-size: 1.1rem;
+      max-width: 520px;
+      line-height: 1.7;
+      animation: fadeIn 2.8s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.9; }
+    }
+    @keyframes glowUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      60% { opacity: 1; transform: translateY(0); text-shadow: 0 0 8px #007aff88; }
+      100% { text-shadow: 0 0 14px #007aff99, 0 0 28px #007aff66; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      background: #1e1e1e;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .top-bar .left > div {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 30s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* HEADER */
+    header.main-header {
+      background: #181818;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .main-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+.logo img {
+  height: 50px;
+  width: 50px;
+
+  /* Balanced glow + shadow layering */
+  filter: 
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.6))             /* Sharper black base */
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))       /* Bright white glow */
+    drop-shadow(0 0 8px rgba(0, 255, 255, 0.5))         /* Subtle cyan */
+    drop-shadow(0 0 14px rgba(138, 43, 226, 0.4))       /* Light purple glow */
+    drop-shadow(0 0 24px rgba(255, 255, 255, 0.7));     /* Wide white aura */
+}
+
+
+    nav.nav-menu { display: none; }
+    .sidebar-toggle {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: #00AEEF;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* MOBILE SIDEBAR */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 260px;
+      height: 100%;
+      background: #222;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+      padding: 25px 18px;
+      z-index: 2500;
+      transition: left 0.3s ease-in-out;
+      overflow-y: auto;
+    }
+    .mobile-sidebar.active { left: 0; }
+    .mobile-sidebar .close-btn {
+      font-size: 24px;
+      cursor: pointer;
+      float: right;
+      color: #007aff;
+      margin-bottom: 20px;
+    }
+    .mobile-sidebar li > a {
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: #2d2d2d;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+    }
+    .dropdown-mobile {
+      display: none;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 2px solid #00AEEF;
+    }
+    .dropdown-mobile.open { display: block; }
+    .dropdown-mobile a:hover {
+      background-color: #007aff22;
+      color: #00AEEF;
+    }
+
+    /* DESKTOP NAVIGATION */
+    @media (min-width: 993px) {
+      .sidebar-toggle, .mobile-sidebar { display: none !important; }
+      nav.nav-menu { display: block; }
+      nav.nav-menu ul {
+        display: flex;
+        gap: 16px;
+        list-style: none;
+        padding: 0 50px;
+        font-weight: 600;
+      }
+      nav.nav-menu ul li {
+        position: relative;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      nav.nav-menu ul li:hover {
+        background-color: #333;
+        color: #00AEEF;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0;
+        background-color: #1a1a1a;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        padding: 10px 0;
+        z-index: 999;
+      }
+      nav.nav-menu ul li:hover .dropdown-content { display: block; }
+      .dropdown-content a {
+        display: block;
+        padding: 10px 20px;
+        color: #ccc;
+      }
+      .dropdown-content a:hover {
+        background-color: #007aff11;
+        color: #00AEEF;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a0a0a;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p {
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<section id="loader">
+  <img src="images/logo.png" alt="Specific Engineers Logo" />
+  <h1>Solutions Built to Last</h1>
+  <p>Reliable engineering, expert flooring, and waterproofing services tailored to your industrial and commercial needs.</p>
+</section>
+
+<!-- Top Bar -->
+<div class="top-bar" style="width: 100%; overflow: hidden; white-space: nowrap;   background: white; color: #fff; font-family: sans-serif; padding: 10px 0; position: relative;">
+  <div class="scroll-container" style="display: inline-block; white-space: nowrap; animation: scrollText 20s linear infinite;">
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+  </div>
+</div>
+
+<style>
+  @keyframes scrollText {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); } /* Adjust based on number of repeats */
+  }
+</style>
+
+
+<!-- Header -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <img src="images/logo.png" alt="Company Logo" />
+    </div>
+    <button class="sidebar-toggle" onclick="document.querySelector('.mobile-sidebar').classList.add('active')">&#9776;</button>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li>
+          <a href="#">Services</a>
+          <div class="dropdown-content">
+            <a href="#">Flooring Services</a>
+            <a href="#">Epoxy Flooring</a>
+            <a href="#">Screeding</a>
+            <a href="#">Coating</a>
+            <a href="#">Waterproofing</a>
+          </div>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Sidebar -->
+<aside class="mobile-sidebar">
+  <span class="close-btn" onclick="this.closest('.mobile-sidebar').classList.remove('active')">×</span>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About Us</a></li>
+    <li>
+      <a href="#" onclick="event.preventDefault(); document.querySelector('.dropdown-mobile').classList.toggle('open')">Services ▾</a>
+      <div class="dropdown-mobile">
+        <a href="#">Flooring Services</a>
+        <a href="#">Epoxy Flooring</a>
+        <a href="#">Screeding</a>
+        <a href="#">Coating</a>
+        <a href="#">Waterproofing</a>
+      </div>
+    </li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</aside>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Specific Engineers. All rights reserved.</p>
+</footer>
+
+<!-- JS -->
+<script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const loader = document.getElementById("loader");
+      loader.style.transition = "all 2s ease";
+      loader.style.transform = "translateY(-100%)";
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 2000);
+    }, 2500);
+  });
+</script>
+
+</body>
+</html>

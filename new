@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Specific Engineers</title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: white;
+  color: #444;
+  scroll-behavior: smooth;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, .section-title, .glow-text, .feature-card h3, nav.nav-menu ul li {
+   font-family: 'Roboto', sans-serif;
+
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Loader */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: inset 0 0 40px #007aff33;
+}
+
+#loader img {
+  width: 160px;
+  margin-bottom: 30px;
+  animation: pulse 1.8s ease-in-out infinite;
+  border-radius: 12px;
+  filter: 
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 12px rgba(0, 255, 255, 0.6))
+    drop-shadow(0 0 20px rgba(138, 43, 226, 0.5))
+    drop-shadow(0 0 40px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.6));
+}
+
+#loader h1 {
+  color: #007aff;
+  font-size: 2.4rem;
+  animation: glowUp 2s ease-in-out forwards;
+  margin-bottom: 15px;
+}
+
+#loader p {
+  font-size: 1.1rem;
+  max-width: 520px;
+  line-height: 1.7;
+  animation: fadeIn 2.8s ease-in-out forwards;
+  opacity: 0;
+  color: #bbb;
+}
+
+/* Loader Animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+}
+
+@keyframes glowUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  60% { opacity: 1; transform: translateY(0); text-shadow: 0 0 8px #007aff88; }
+  100% { text-shadow: 0 0 14px #007aff99, 0 0 28px #007aff66; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Header */
+header.main-header {
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-header .container {
+  display: flex;
+  height: 41px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  width: 80px;
+  filter: 
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 8px rgba(0, 255, 255, 0.5))
+    drop-shadow(0 0 14px rgba(138, 43, 226, 0.4))
+    drop-shadow(0 0 24px rgba(255, 255, 255, 0.7));
+}
+
+nav.nav-menu { display: none; }
+
+.sidebar-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #00AEEF;
+  display: block;
+  cursor: pointer;
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 260px;
+  height: 100%;
+  background: #222;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+  padding: 25px 18px;
+  z-index: 2500;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.mobile-sidebar.active {
+  left: 0;
+}
+
+.mobile-sidebar .close-btn {
+  font-size: 24px;
+  cursor: pointer;
+  color: #007aff;
+  display: block;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.mobile-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-sidebar li > a {
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #2d2d2d;
+  color: #fff;
+  display: block;
+   font-family: 'Roboto', sans-serif;
+
+}
+
+.mobile-sidebar li > a:hover {
+  background: #007aff22;
+  color: #00AEEF;
+}
+
+.dropdown-mobile {
+  display: none;
+  margin-top: 8px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 2px solid #00AEEF;
+}
+
+.dropdown-mobile a {
+  display: block;
+  padding: 8px;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+  color: #ccc;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.dropdown-mobile a:hover {
+  background-color: #007aff22;
+  color: #00AEEF;
+}
+
+.dropdown-mobile.open {
+  display: block;
+}
+
+/* Desktop Navigation */
+@media (min-width: 993px) {
+  .sidebar-toggle, .mobile-sidebar { display: none !important; }
+  nav.nav-menu { display: block; }
+  nav.nav-menu ul {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    padding: 0 50px;
+    font-weight: 600;
+     font-family: 'Roboto', sans-serif;
+
+  }
+  nav.nav-menu ul li {
+    position: relative;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  nav.nav-menu ul li:hover {
+    background-color: #333;
+    color: #00AEEF;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color:#2d2d2d;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    padding: 10px 0;
+    z-index: 999;
+  }
+  nav.nav-menu ul li:hover .dropdown-content { display: block; }
+  .dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #ccc;
+  }
+  .dropdown-content a:hover {
+    background-color: #007aff11;
+    color: #00AEEF;
+  }
+}
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<section id="loader">
+  <img src="images/logo.png" alt="Specific Engineers Logo" />
+  <h1>Solutions Built to Last</h1>
+  <p>Reliable engineering, expert flooring, and waterproofing services tailored to your industrial and commercial needs.</p>
+</section>
+
+<!-- Top Bar -->
+<div class="top-bar" style="width: 100%; overflow: hidden; white-space: nowrap;   background: white; color: #444; font-family: sans-serif; padding: 10px 0; position: relative;">
+  <div class="scroll-container" style="display: inline-block; white-space: nowrap; animation: scrollText 20s linear infinite;">
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+  </div>
+</div>
+
+<style>
+  @keyframes scrollText {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); } /* Adjust based on number of repeats */
+  }
+</style>
+
+
+<!-- Header -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <img src="images/logo.png" alt="Company Logo" />
+    </div>
+    <button class="sidebar-toggle" onclick="document.querySelector('.mobile-sidebar').classList.add('active')">&#9776;</button>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li>
+          <a href="Service.html">Services</a>
+          <div class="dropdown-content">
+            <a href="Flooring_services.html">Flooring </a>
+            <a href="Epoxy_Flooring_Services.html">Epoxy Flooring</a>
+            <a href="Screeding_Service.html">Screeding </a>
+            <a href="Densification_Service.html">Densification</a>
+            <a href="Coating_Service.html">Coating</a>
+            <a href="Waterproofing_Service.html">Waterproofing</a>
+            <a href="Epoxy_077.html">Epoxy</a>
+          </div>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Sidebar -->
+<aside class="mobile-sidebar">
+  <span class="close-btn" onclick="closeSidebar()">×</span>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="About.html">About Us</a></li>
+    <li>
+      <a href="#" onclick="event.preventDefault(); toggleDropdown(this)">Services ▾</a>
+      <div class="dropdown-mobile">
+            <a href="Flooring_services.html">Flooring </a>
+            <a href="Epoxy_Flooring_Services.html">Epoxy Flooring</a>
+            <a href="Screeding_Service.html">Screeding </a>
+            <a href="Densification_Service.html">Densification</a>
+            <a href="Coating_Service.html">Coating</a>
+            <a href="Waterproofing_Service.html">Waterproofing</a>
+            <a href="Epoxy_077.html">Epoxy</a>
+      </div>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</aside>
+
+<!-- ////////////////////////// HERO SECTION /////////////////
+////////////////////////// HERO SECTION ///////////////// -->
+<section style="
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  padding: 0 20px;
+  border-radius: 60px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Roboto', sans-serif;
+
+">
+
+  <!-- Background Video -->
+<!-- Background Video -->
+<video autoplay muted loop playsinline style="
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98%; /* Adjust width to create gap on left and right */
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.75) saturate(1.1);
+  border-radius: 60px;
+">
+  <source src="images/COMPANY_HERO_02_video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
+  <!-- Gradient Overlay -->
+<!-- Gradient Overlay -->
+<div style="
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.15));
+  z-index: -1;
+  border-radius: 60px;
+"></div>
+
+  <!-- Content -->
+  <div style="
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+    animation: fadeIn 1.8s ease-out forwards;
+  ">
+    <h1 style="
+     font-family: 'Roboto', sans-serif;
+
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow:
+        0 0 10px #007affcc,
+        0 0 20px #007affbb,
+        0 0 40px #007aff99;
+    ">
+      ENGINEERING EXCELLENCE IN EVERY PROJECT
+    </h1>
+    <p style="
+      font-size: 1.25rem;
+      color: #ddd;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-inline: auto;
+      line-height: 1.6;
+    ">
+      From industrial flooring to precision coatings – we deliver quality that lasts.
+    </p>
+    <a href="#services" style="
+     font-family: 'Roboto', sans-serif;
+
+      font-size: 1rem;
+      padding: 14px 34px;
+      border-radius: 40px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      margin: 10px;
+      font-weight: 700;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      background: #007aff;
+      color: white;
+      box-shadow: 0 4px 14px rgba(254, 50, 10, 0.25);
+      text-decoration: none;
+    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(254, 50, 10, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 14px rgba(254, 50, 10, 0.25)'">
+      View Services
+    </a>
+  </div>
+
+  <!-- Fade-in Animation -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem !important;
+        padding: 0 10px;
+      }
+      p {
+        font-size: 1rem !important;
+      }
+      a {
+        padding: 12px 26px !important;
+        font-size: 0.9rem !important;
+      }
+    }
+  </style>
+</section>
+
+
+<!-- /////////////////////////////////// Section 2/////////////////
+/////////////////////////////////// Section 2///////////////// -->
+<!-- Swiper CSS -->
+
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+<section style="position:relative; background:white; color:#fff; padding:80px 20px 100px; font-family:'Poppins', sans-serif; overflow:hidden;">
+  <div style="max-width:1200px; margin:auto; text-align:center; position:relative; z-index:2;">
+    <h2 style="font-size:2.8rem; color:#444; margin-bottom:50px; text-shadow:0 0 12px #007aff55;">Our Services</h2>
+
+    <!-- Swiper Slider -->
+    <div class="swiper-container service-swiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_01.jpg" alt="Flooring Services">
+            </div>
+            <h3>Flooring Services</h3>
+            <p>Durable and aesthetic flooring solutions for homes and industries.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_02.jpg" alt="Epoxy Flooring Services">
+            </div>
+            <h3>Epoxy Flooring Services</h3>
+            <p>Protective and seamless epoxy flooring for all surfaces.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_03.jpg" alt="Screeding Service">
+            </div>
+            <h3>Screeding Service</h3>
+            <p>Ensure level and smooth surfaces before floor installation.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_04.jpg" alt="Densification">
+            </div>
+            <h3>Densification Service</h3>
+            <p>Enhance concrete durability and reduce dusting with densifiers.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_05.jpg" alt="Coating Service">
+            </div>
+            <h3>Coating Service</h3>
+            <p>High-performance coatings for floors resistant to chemicals and wear.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_06.jpg" alt="Waterproofing">
+            </div>
+            <h3>Waterproofing Service</h3>
+            <p>Effective waterproofing for terraces, rooftops, and wet areas.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="service-card">
+            <div class="img-wrap">
+              <img src="images/Company_img_07.jpg" alt="Epoxy Flooring">
+            </div>
+            <h3>Epoxy Flooring</h3>
+            <p>Seamless epoxy floors for industrial strength and modern look.</p>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!-- Slider & Card Styling -->
+  <style>
+    .swiper-container {
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      box-sizing: border-box;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .service-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 0 12px #0004;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 18px #00AEEF88;
+    }
+
+    .service-card h3 {
+      color: #00AEEF;
+      font-size: 1.3rem;
+      margin: 12px 0 8px;
+    }
+
+    .service-card p {
+      color: #bbb;
+      font-size: 0.95rem;
+    }
+
+    .img-wrap {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #00AEEF;
+    }
+
+    .swiper-pagination-bullet {
+      background: #00AEEF;
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+  </style>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.service-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        480: {
+          slidesPerView: 1.1,
+        },
+        640: {
+          slidesPerView: 1.5,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1280: {
+          slidesPerView: 3.2,
+        }
+      }
+    });
+  </script>
+</section>
+
+
+
+<!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
+ <!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
+  <!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
+   <!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
+    <!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
+<section style="background:black; padding:0px 20px; font-family:'Poppins', sans-serif; color:#fff; text-align:center; overflow:hidden; position:relative;">
+  <h2 style="font-size:2.5rem; color:white; margin-bottom:50px; text-shadow:0 0 12px #007aff55;">
+    Our Trusted Clients
+  </h2>
+
+  <!-- Style for animation -->
+  <style>
+    .client-marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .client-marquee-track {
+      display: flex;
+      width: fit-content;
+      animation: scrollLeft 40s linear infinite;
+      gap: 60px;
+    }
+
+    .client-marquee-track img {
+      height: 80px;
+      filter: drop-shadow(0 0 4px #00000066);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .client-marquee-track img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 10px #007aff);
+    }
+
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media(max-width: 600px) {
+      .client-marquee-track img {
+        height: 60px;
+      }
+    }
+
+    /* Floating blur balls */
+    .blur-ball {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.2;
+      z-index: 0;
+      animation: floatBall 18s ease-in-out infinite;
+    }
+
+
+
+    @keyframes floatBall {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-40px) translateX(20px); }
+    }
+  </style>
+
+
+
+  <!-- Marquee Wrapper -->
+  <div class="client-marquee-wrapper">
+    <div class="client-marquee-track">
+      <!-- Logos (First Set) -->
+      <img src="images/WHIRPOOL_01.png" alt="Client 1">
+      <img src="images/TE_Connectivity_logo.svg.png" alt="Client 2">
+      <img src="images/Tata-Logo.jpg" alt="Client 3">
+      <img src="images/Shimizu_Corporation-Logo.wine.png" alt="Client 4">
+      <img src="images/BAJAJ.png" alt="Client 5">
+      <img src="images/Suhana_Logo.jpg" alt="Client 6">
+      <img src="images/itc_limited_logo.jpeg" alt="Client 7">
+      <img src="images/grupo-antolin-logo-case-study.png" alt="Client 8">
+      <img src="images/AJIO_LOGO.svg" alt="Client 9">
+      <img src="images/AUQADRY_LOGO.png" alt="Client 10">
+      <img src="images/FArmaer.png" alt="Client 11">
+      <img src="images/MAULI.jpeg" alt="Client 12">
+      <img src="images/CORNEA.webp" alt="Client 13">
+      <img src="images/reachglobal.png" alt="Client 14">
+      <img src="images/DENASA.png" alt="Client 15">
+      <img src="images/power_one_micro_systems_private_limited_logo.jpeg" alt="Client 16">
+      <img src="images/Hyd-Air.png" alt="Client 17">
+      <img src="images/kardare-logo.png" alt="Client 18">
+      <img src="images/itc_limited_logo.jpeg" alt="Client 19">
+      
+      <!-- Logos (Duplicated for seamless scroll) -->
+      <img src="images/WHIRPOOL_01.png" alt="Client 1">
+      <img src="images/TE_Connectivity_logo.svg.png" alt="Client 2">
+      <img src="images/Tata-Logo.jpg" alt="Client 3">
+      <img src="images/Shimizu_Corporation-Logo.wine.png" alt="Client 4">
+      <img src="images/BAJAJ.png" alt="Client 5">
+      <img src="images/Suhana_Logo.jpg" alt="Client 6">
+      <img src="images/itc_limited_logo.jpeg" alt="Client 7">
+      <img src="images/grupo-antolin-logo-case-study.png" alt="Client 8">
+      <img src="images/AJIO_LOGO.svg" alt="Client 9">
+      <img src="images/AUQADRY_LOGO.png" alt="Client 10">
+      <img src="images/FArmaer.png" alt="Client 11">
+      <img src="images/MAULI.jpeg" alt="Client 12">
+      <img src="images/CORNEA.webp" alt="Client 13">
+      <img src="images/reachglobal.png" alt="Client 14">
+      <img src="images/DENASA.png" alt="Client 15">
+      <img src="images/power_one_micro_systems_private_limited_logo.jpeg" alt="Client 16">
+      <img src="images/Hyd-Air.png" alt="Client 17">
+      <img src="images/kardare-logo.png" alt="Client 18">
+      <img src="images/itc_limited_logo.jpeg" alt="Client 19">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 
+///////////////////////////////////////  SECTION 3 //////////////
+///////////////////////////////////////  SECTION 3 ////////////// -->
+
+
+
+<!-- Load Urbanist Font -->
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+
+<section style="background-color:black; width: 100%; font-family: 'Urbanist', sans-serif;">
+
+  <!-- Section Heading -->
+  <div style="text-align: center; padding-top: 150px; padding-bottom: 0;">
+    <h2 style="
+      font-size: 3rem;
+      color: white;
+      text-shadow: 0 0 12px #007aff55;
+      letter-spacing: 1px;
+    ">
+      WHY CHOOSE US?
+    </h2>
+  </div>
+
+  <!-- Fixed Hover Image -->
+  <div id="fixed-image" style="
+    height: 30vw;
+    width: 24vw;
+    border-radius: 15px;
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    top: 25%;
+    display: none;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;">
+  </div>
+
+  <!-- Hover Project List -->
+  <div style="min-height: 100vh; width: 100%; padding-top: 10px; padding-bottom: 4vw;">
+    <div id="elem-container">
+
+      <div class="elem" data-image="images/">
+        <div class="overlay"></div>
+        <h2>Top-grade epoxy & waterproofing solutions</h2>
+        <div class="small-text">Premium Materials</div>
+      </div>
+
+      <div class="elem" data-image="images/">
+        <div class="overlay"></div>
+        <h2>Certified experts with precise application</h2>
+        <div class="small-text">Skilled Technicians</div>
+      </div>
+
+      <div class="elem" data-image="images/">
+        <div class="overlay"></div>
+        <h2>Projects delivered on or before deadlines</h2>
+        <div class="small-text">Timely Execution</div>
+      </div>
+
+      <div class="elem" data-image="images/">
+        <div class="overlay"></div>
+        <h2>Tailored designs for unique spaces</h2>
+        <div class="small-text">Customized Solutions</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hover Image Script -->
+  <script>
+    const elemContainer = document.querySelector("#elem-container");
+    const fixedImage = document.querySelector("#fixed-image");
+
+    elemContainer.addEventListener("mouseenter", () => fixedImage.style.display = "block");
+    elemContainer.addEventListener("mouseleave", () => fixedImage.style.display = "none");
+
+    document.querySelectorAll(".elem").forEach(elem => {
+      const overlay = elem.querySelector(".overlay");
+      elem.addEventListener("mouseenter", () => {
+        fixedImage.style.backgroundImage = `url(${elem.getAttribute("data-image")})`;
+        overlay.style.top = "0";
+      });
+      elem.addEventListener("mouseleave", () => {
+        overlay.style.top = "-100%";
+      });
+    });
+  </script>
+
+  <!-- Styles -->
+  <style>
+    .elem {
+      height: 150px;
+      width: 100%;
+      position: relative;
+      border-bottom: 1px solid #38383864;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 0 2vw;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .elem h2 {
+      font-size: 2.1vw;
+      font-weight: 800;
+      z-index: 9;
+      position: relative;
+      color: #fff;
+    }
+
+    .elem .small-text {
+      margin-left: auto;
+      font-size: 0.95vw;
+      color: white;
+      z-index: 9;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .elem .overlay {
+      height: 100%;
+      width: 100%;
+      background-color: #007aff;
+      position: absolute;
+      left: 0;
+      top: -100%;
+      transition: all 0.25s ease;
+    }
+
+    @media (max-width: 768px) {
+      .elem {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 4vw 4vw;
+        gap: 6px;
+      }
+
+      .elem h2 {
+        font-size: 6vw;
+      }
+
+      .elem .small-text {
+        font-size: 3.5vw;
+        margin-left: 0;
+        color: #cccccc;
+      }
+
+      #fixed-image {
+        display: none !important;
+      }
+    }
+  </style>
+</section>
+
+<!-- ////////////////////////// SECTION 444///////////////////// -->
+<!-- ////////////////////////// SECTION 444///////////////////// -->
+<!-- ////////////////////////// SECTION 444///////////////////// -->
+<!-- Testimonials Section -->
+
+
+
+<!-- //////////////////////////// SECTION 5/////////////////// -->
+<!-- Call to Action Section -->
+<section style="background:black; overflow:hidden; font-family:'Georgia', 'Times New Roman', serif;">
+
+  <!-- Marquee Wrapper -->
+  <div onmouseover="this.querySelectorAll('.marquee').forEach(m => m.style.animationPlayState='paused')" 
+       onmouseout="this.querySelectorAll('.marquee').forEach(m => m.style.animationPlayState='running')" 
+       style="white-space: nowrap; overflow: hidden; width: 100%; padding: 4vw 0; display: flex;">
+
+    <!-- Duplicate Marquee for Seamless Loop -->
+    <div class="marquee" style="display: inline-block; white-space: nowrap; animation: scrollLeft 30s linear infinite; will-change: transform;">
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">EPOXY FLOORING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">SCREEDING SERVICE</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">WATERPROOFING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">INDUSTRIAL COATING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">SURFACE PREPARATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">DENSIFICATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+    </div>
+
+    <!-- Duplicate Marquee again for continuous loop -->
+    <div class="marquee" style="display: inline-block; white-space: nowrap; animation: scrollLeft 30s linear infinite; will-change: transform;">
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">EPOXY FLOORING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">SCREEDING SERVICE</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">WATERPROOFING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">INDUSTRIAL COATING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">SURFACE PREPARATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+
+      <span style="font-size: 8.5vw; font-weight: bold; display: inline-block;">DENSIFICATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+    </div>
+
+  </div>
+
+  <!-- Marquee Animation -->
+  <style>
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media (max-width: 768px) {
+      section span {
+        font-size: 11vw !important;
+      }
+
+      section div[style*="border-radius: 50%"] {
+        height: 30px !important;
+        width: 30px !important;
+        margin: 2vw !important;
+      }
+    }
+  </style>
+</section>
+
+
+<!-- ///////////////////////////// SECTION 6 //////////////////////// -->
+<!-- Our Projects Section -->
+<section style="background:black; color:#fff; padding:80px 20px; font-family:'Poppins', sans-serif; position:relative; overflow:hidden;">
+  <!-- Title -->
+  <div style="max-width:1200px; margin:auto; text-align:center; position:relative; z-index:2;">
+    <h2 style="font-size:2.8rem; color:white; margin-bottom:50px; text-shadow:0 0 12px #007aff55;">
+      Our Recent Projects
+    </h2>
+
+    <!-- Projects Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px;">
+      
+      <!-- Project Card Template -->
+      <div class="project-card">
+        <img src="images/RECENT _01.jpg" alt="Project 1">
+        <div class="overlay">
+          <h4>Factory Epoxy Flooring</h4>
+          <p>Industrial-grade solution for chemical resistance and strength.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/RECENT_02.jpg" alt="Project 2">
+        <div class="overlay">
+          <h4>PU Coating for Parking</h4>
+          <p>Smooth, high-traction finish for commercial parking areas.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/RECENT_03.jpg" alt="Project 3">
+        <div class="overlay">
+          <h4>Terrace Waterproofing</h4>
+          <p>Leak-proof protection for residential and industrial roofs.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/RECENT_04.jpg" alt="Project 4">
+        <div class="overlay">
+          <h4>Warehouse Floor Coating</h4>
+          <p>Heavy-duty coating built for long-lasting durability.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CSS Styling -->
+  <style>
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .project-card:hover .overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .overlay h4 {
+      color: #00AEEF;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+
+    .overlay p {
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+  </style>
+</section>
+
+
+
+<!-- ////////////////////////////////// SECTION 777///////////// -->
+
+
+<!-- Contact Section -->
+
+
+<!-- /////////////////////////////// SECTION 888  ///////////////// -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- GSAP ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Expertise Section -->
+<section style="background:black; color:#fff; padding:80px 20px; font-family:'Libre Baskerville', serif; position:relative; overflow:hidden; text-align:center;">
+
+
+  <div style="max-width:1000px; margin:auto; position:relative; z-index:1;">
+    <h2 style="font-size:2.6rem; color:white; margin-bottom:20px; font-family: 'Roboto', sans-serif, serif;">
+      Our Expertise
+    </h2>
+    <p style="font-size:1.15rem; color:black; margin-bottom:50px;">
+      At Specific Engineers, we bring decades of knowledge and field experience to every project. From advanced surface preparation to flawless epoxy finishes, we specialize in:
+    </p>
+
+    <!-- Expertise Items -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px; margin-top:30px;">
+      <div class="expertise-box" style="flex:1 1 260px; min-width:240px;">
+        <h3 style="color:#00AEEF; font-size:1.2rem; margin-bottom:12px;">🛠️ Industrial Epoxy Systems</h3>
+        <p style="color:#bbb;">Resistant to wear, chemicals & heavy machinery—ideal for factories & warehouses.</p>
+      </div>
+      <div class="expertise-box" style="flex:1 1 260px; min-width:240px;">
+        <h3 style="color:#00AEEF; font-size:1.2rem; margin-bottom:12px;">💧 Waterproofing Solutions</h3>
+        <p style="color:#bbb;">From rooftops to basements, we ensure long-term protection from leaks & seepage.</p>
+      </div>
+      <div class="expertise-box" style="flex:1 1 260px; min-width:240px;">
+        <h3 style="color:#00AEEF; font-size:1.2rem; margin-bottom:12px;">🔧 Screeding & Surface Prep</h3>
+        <p style="color:#bbb;">Laser-levelled screeds and advanced surface profiling for perfect application base.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP Scroll Animation Script -->
+  <script>
+  // Register the GSAP ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate each .expertise-box when it enters the viewport
+  gsap.utils.toArray(".expertise-box").forEach((box, index) => {
+    gsap.from(box, {
+      scrollTrigger: {
+        trigger: box,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      x: index === 0 ? -100 : index === 2 ? 100 : 0,
+      y: index === 1 ? 60 : 0,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+  });
+</script>
+
+</section>
+
+
+
+
+
+  <section style="position:relative; background:black; color:#fff; padding:80px 20px; font-family:'Libre Baskerville', serif; text-align:center; overflow:hidden;">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+
+  <div style="max-width:1200px; margin:auto; position:relative; z-index:2;">
+    <h2 style="font-size:2.8rem; color:white; margin-bottom:50px; text-shadow:0 0 12px #007aff55; font-family: 'Roboto', serif;">
+      What Our Clients Say
+    </h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:30px;">
+
+      <!-- Testimonial Card 1 -->
+      <div class="testimonial-card">
+        <p>"Specific Engineers did an amazing job with our factory epoxy flooring. The finish is smooth, durable, and looks professional."</p>
+        <h4>Rajesh Kumar</h4>
+        <span>Plant Manager, Sigma Pvt. Ltd.</span>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="testimonial-card">
+        <p>"Excellent waterproofing service! They resolved our leakage issue quickly and professionally. Highly recommended."</p>
+        <h4>Sneha Verma</h4>
+        <span>Homeowner, Mumbai</span>
+      </div>
+
+      <!-- Testimonial Card 3 -->
+      <div class="testimonial-card">
+        <p>"Their screeding and coating work was flawless. The team was on time, polite, and completed everything to specification."</p>
+        <h4>Arun Mehta</h4>
+        <span>Project Engineer, BuildTech</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Inline CSS -->
+  <style>
+    @keyframes float {
+      0%, 100% { transform:translateY(0); }
+      50% { transform:translateY(-20px); }
+    }
+    @keyframes floatAlt {
+      0%, 100% { transform:translateY(0) translateX(0); }
+      50% { transform:translateY(-25px) translateX(15px); }
+    }
+    .testimonial-card {
+      background:#1a1a1a;
+      border-radius:12px;
+      padding:25px 20px;
+      box-shadow:0 0 15px #0006;
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+        font-family: 'Roboto', sans-serif;
+    }
+    .testimonial-card:hover {
+      transform:translateY(-10px);
+      box-shadow:0 0 20px #00AEEF88;
+    }
+    .testimonial-card p {
+      color:black;
+      font-style:italic;
+      margin-bottom:20px;
+      font-size:0.95rem;
+    }
+    .testimonial-card h4 {
+      color:#00AEEF;
+      margin-bottom:5px;
+      font-size:1.1rem;
+      font-weight: 700;
+    }
+    .testimonial-card span {
+      color:#888;
+      font-size:0.85rem;
+    }
+  </style>
+
+</section>
+
+<!-- Final CTA Banner -->
+<section style="background:linear-gradient(135deg, #007aff, #ff6533); color:#fff; padding:60px 20px; font-family:'Poppins', sans-serif; text-align:center;">
+  <div style="max-width:900px; margin:auto;">
+    <h2 style="font-size:2.5rem; margin-bottom:20px; text-shadow:0 2px 6px rgba(0,0,0,0.4);">
+      Let’s Build Something Great Together
+    </h2>
+    <p style="font-size:1.1rem; margin-bottom:35px; color:#fff; max-width:700px; margin-left:auto; margin-right:auto;">
+      From industrial flooring to waterproofing solutions, we provide unmatched expertise and long-lasting results. Let's collaborate and bring your project to life.
+    </p>
+    <a href="#contact" style="display:inline-block; background:#fff; color:#007aff; padding:14px 32px; border-radius:8px; font-size:1rem; font-weight:600; text-decoration:none; transition:all 0.3s ease;" onmouseover="this.style.background='#000'; this.style.color='#fff'" onmouseout="this.style.background='#fff'; this.style.color='#007aff'">
+      Get in Touch Now
+    </a>
+  </div>
+</section>
+
+<!-- Floating Buttons -->
+<div style="position:fixed; bottom:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:12px;">
+  <a href="https://wa.me/+917383570508" target="_blank" style="background:#25D366; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #25D36699;">
+    <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" style="width:20px;"> WhatsApp
+  </a>
+  <a href="tel:+917383570508" style="background:#007aff; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #007aff99;">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Call" style="width:20px;"> Call Now
+  </a>
+</div>
+
+
+
+
+<!-- Final Footer -->
+<footer style="width:100vw; background:#0D0D0D; color:#fff; font-family:'Poppins', sans-serif; padding:60px 20px 40px; position:relative; overflow:hidden; border-top:1px solid #222;  width: 100%; left:0; box-sizing:border-box;">
+
+  <!-- Content Grid -->
+  <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:50px; position:relative; z-index:1; animation:fadeIn 1.5s ease-out;">
+    
+    <!-- Logo -->
+<div>
+<h2 style="font-size:1.8rem; color:#00AEEF; margin: -10px 0 5px; font-family: 'Roboto', sans-serif; white-space: nowrap;">
+  Specific Engineers
+</h2>
+
+  <p style="color:black; font-size:0.95rem; line-height:1.7;">
+    Delivering industrial-grade flooring, waterproofing & coating solutions with excellence, durability, and nationwide reach.
+  </p>
+</div>
+
+
+
+    <!-- Services -->
+   <div>
+  <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:16px;">Our Services</h4>
+  <ul style="list-style:none; padding:0;">
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Flooring Services</a></li>
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Epoxy Flooring</a></li>
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Screeding Service</a></li>
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Waterproofing</a></li>
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Industrial Coating</a></li>
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Surface Preparation</a></li>
+    <li><a href="#" style="color:#bbb; text-decoration:none; display:block;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Densification</a></li>
+  </ul>
+</div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:16px;">Quick Links</h4>
+      <ul style="list-style:none; padding:0;">
+        <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">Home</a></li>
+        <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">About Us</a></li>
+        <li><a href="#" style="color:#bbb; text-decoration:none; display:block; margin-bottom:8px;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">Projects</a></li>
+        <li><a href="#" style="color:#bbb; text-decoration:none; display:block;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact & Social -->
+    <div>
+      <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:16px;">Contact</h4>
+      <p style="margin-bottom:10px; color:black;">📍Flat No.308, C3 Building, Purvarang Society, Gat No.571, Kesnand, Pune-412207, Maharashtra, India</p>
+      <p style="margin-bottom:10px; color:black;">📞 +917383570508</p>
+      <p style="margin-bottom:10px; color:black;">📧 info@specificengineers.com</p>
+
+      <div style="margin-top:14px;">
+        <a href="#" title="LinkedIn" style="margin-right:14px;" target="_blank">
+          <svg width="22" height="22" fill="#bbb" onmouseover="this.style.fill='#007aff'" onmouseout="this.style.fill='#bbb'" xmlns="http://www.w3.org/2000/svg"><path d="M5 3c0 1.1-.9 2-2 2S1 4.1 1 3s.9-2 2-2 2 .9 2 2zM1 6h4v12H1zm7 0h3v1.6h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.6V18h-4v-5.5c0-1.3 0-3-2-3s-2.3 1.5-2.3 2.9V18H8z"/></svg>
+        </a>
+        <a href="#" title="Instagram" style="margin-right:14px;" target="_blank">
+          <svg width="22" height="22" fill="#bbb" onmouseover="this.style.fill='#007aff'" onmouseout="this.style.fill='#bbb'" xmlns="http://www.w3.org/2000/svg"><path d="M7 2C4.8 2 3 3.8 3 6v8c0 2.2 1.8 4 4 4h8c2.2 0 4-1.8 4-4V6c0-2.2-1.8-4-4-4H7zm8 2c.6 0 1 .4 1 1s-.4 1-1 1-.9-.4-.9-1 .4-1 .9-1zM8 6c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4zm0 1.5C6.6 7.5 5.5 8.6 5.5 10S6.6 12.5 8 12.5 10.5 11.4 10.5 10 9.4 7.5 8 7.5z"/></svg>
+        </a>
+        <a href="#" title="Facebook" style="margin-right:14px;" target="_blank">
+          <svg width="22" height="22" fill="#bbb" onmouseover="this.style.fill='#007aff'" onmouseout="this.style.fill='#bbb'" xmlns="http://www.w3.org/2000/svg"><path d="M13 3h3V0h-3c-2.8 0-5 2.2-5 5v2H5v3h3v8h3v-8h3l1-3h-4V5c0-.6.4-1 1-1z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div style="margin:40px auto 20px; width:90%; max-width:900px; height:1px; background:linear-gradient(to right, transparent, #444, transparent);"></div>
+
+  <!-- Copyright -->
+  <p style="font-size:0.9rem; color:#777; text-align:center;">&copy; 2025 Specific Engineers. All rights reserved.</p>
+
+  <!-- Scroll to Top -->
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    style="position:fixed; bottom:30px; right:30px; background:#00AEEF; color:#fff; border:none; padding:12px 16px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:999; box-shadow:0 0 10px #00AEEF; transition:background 0.3s;">
+    ↑
+  </button>
+
+  <!-- Animation -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</footer>
+
+
+
+
+<script>
+  const sidebar = document.querySelector('.mobile-sidebar');
+  const toggleBtn = document.querySelector('.sidebar-toggle');
+  const closeBtn = document.querySelector('.mobile-sidebar .close-btn');
+
+  function openSidebar() {
+    sidebar.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Open sidebar
+  toggleBtn.addEventListener('click', openSidebar);
+
+  // Close with close button
+  closeBtn.addEventListener('click', closeSidebar);
+
+  // Close on outside click
+  document.addEventListener('click', function (e) {
+    if (
+      sidebar.classList.contains('active') &&
+      !sidebar.contains(e.target) &&
+      !toggleBtn.contains(e.target)
+    ) {
+      closeSidebar();
+    }
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+      closeSidebar();
+    }
+  });
+</script>
+
+
+<!-- JS -->
+<script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const loader = document.getElementById("loader");
+      loader.style.transition = "all 2s ease";
+      loader.style.transform = "translateY(-100%)";
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 2000);
+    }, 2500);
+  });
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  gsap.from(".feature-card", {
+    opacity: 0,
+    y: 40,
+    duration: 1.2,
+    stagger: 0.3,
+    ease: "power2.out"
+  });
+</script>
+<script>
+  function toggleDropdown(link) {
+    const dropdown = link.nextElementSibling;
+    dropdown.classList.toggle('open');
+  }
+
+  function closeSidebar() {
+    document.querySelector('.mobile-sidebar').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Optional: open sidebar toggle logic (if you use a button with .sidebar-toggle)
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        document.querySelector('.mobile-sidebar').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!-- background:#f5f8ff; color:#fff; -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Specific Engineers</title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: white;
+  color: #444;
+  scroll-behavior: smooth;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, .section-title, .glow-text, .feature-card h3, nav.nav-menu ul li {
+   font-family: 'Roboto', sans-serif;
+
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Loader */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+background:#f5f8ff; color:#fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: inset 0 0 40px #007aff33;
+}
+
+#loader img {
+  width: 160px;
+  margin-bottom: 30px;
+  animation: pulse 1.8s ease-in-out infinite;
+  border-radius: 12px;
+  filter: 
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 12px rgba(0, 255, 255, 0.6))
+    drop-shadow(0 0 20px rgba(138, 43, 226, 0.5))
+    drop-shadow(0 0 40px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.6));
+}
+
+#loader h1 {
+  color: #007aff;
+  font-size: 2.4rem;
+  animation: glowUp 2s ease-in-out forwards;
+  margin-bottom: 15px;
+}
+
+#loader p {
+  font-size: 1.1rem;
+  max-width: 520px;
+  line-height: 1.7;
+  animation: fadeIn 2.8s ease-in-out forwards;
+  opacity: 0;
+  color: black;
+}
+
+/* Loader Animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+}
+
+@keyframes glowUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  60% { opacity: 1; transform: translateY(0); text-shadow: 0 0 8px #007aff88; }
+  100% { text-shadow: 0 0 14px #007aff99, 0 0 28px #007aff66; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Header */
+header.main-header {
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-header .container {
+  display: flex;
+  height: 41px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  width: 80px;
+  filter: 
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 8px rgba(0, 255, 255, 0.5))
+    drop-shadow(0 0 14px rgba(138, 43, 226, 0.4))
+    drop-shadow(0 0 24px rgba(255, 255, 255, 0.7));
+}
+
+nav.nav-menu { display: none; }
+
+.sidebar-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #00AEEF;
+  display: block;
+  cursor: pointer;
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 260px;
+  height: 100%;
+  background: #222;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+  padding: 25px 18px;
+  z-index: 2500;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.mobile-sidebar.active {
+  left: 0;
+}
+
+.mobile-sidebar .close-btn {
+  font-size: 24px;
+  cursor: pointer;
+  color: #007aff;
+  display: block;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.mobile-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-sidebar li > a {
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #2d2d2d;
+  color: #fff;
+  display: block;
+   font-family: 'Roboto', sans-serif;
+
+}
+
+.mobile-sidebar li > a:hover {
+  background: #007aff22;
+  color: #00AEEF;
+}
+
+.dropdown-mobile {
+  display: none;
+  margin-top: 8px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 2px solid #00AEEF;
+}
+
+.dropdown-mobile a {
+  display: block;
+  padding: 8px;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+  color: #ccc;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.dropdown-mobile a:hover {
+  background-color: #007aff22;
+  color: #00AEEF;
+}
+
+.dropdown-mobile.open {
+  display: block;
+}
+
+/* Desktop Navigation */
+@media (min-width: 993px) {
+  .sidebar-toggle,
+  .mobile-sidebar {
+    display: none !important;
+  }
+
+  nav.nav-menu {
+    display: block;
+  }
+
+  nav.nav-menu ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0 60px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+    background-color: #fff;
+  }
+
+  nav.nav-menu ul li {
+    position: relative;
+    padding: 12px 0;
+    cursor: pointer;
+    color: #222;
+    transition: color 0.3s ease;
+  }
+
+  nav.nav-menu ul li::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #00AEEF; /* Sliding line color */
+    transition: width 0.4s ease;
+  }
+
+  nav.nav-menu ul li:hover {
+    color: #00AEEF;
+  }
+
+  nav.nav-menu ul li:hover::after {
+    width: 100%;
+  }
+
+  /* Dropdown Styling */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    padding: 10px 0;
+    min-width: 220px;
+    z-index: 999;
+  }
+
+  nav.nav-menu ul li:hover .dropdown-content {
+    display: block;
+    animation: dropdownFade 0.3s ease-in-out;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f7f7f7;
+    color: #00AEEF;
+    padding-left: 24px;
+  }
+
+  @keyframes dropdownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<section id="loader">
+  <img src="images/logo.png" alt="Specific Engineers Logo" />
+<h1>Solutions Built to Last</h1>
+<p>Reliable Engineering, Expert Flooring, and Waterproofing Services Tailored to Your Industrial and Commercial Needs.</p>
+
+</section>
+
+<!-- Top Bar -->
+<div class="top-bar" style="width: 100%; overflow: hidden; white-space: nowrap;   background: white; color: #444; font-family: sans-serif; padding: 10px 0; position: relative;">
+  <div class="scroll-container" style="display: inline-block; white-space: nowrap; animation: scrollText 20s linear infinite;">
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+    <span style="display: inline-block; padding-right: 50px;">
+      Welcome to Specific Engineers – Excellence in Epoxy Flooring & Waterproofing Solutions • 
+    </span>
+  </div>
+</div>
+
+<style>
+  @keyframes scrollText {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); } /* Adjust based on number of repeats */
+  }
+</style>
+
+
+<!-- Header -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <img src="images/logo.png" alt="Company Logo" />
+    </div>
+    <button class="sidebar-toggle" onclick="document.querySelector('.mobile-sidebar').classList.add('active')">&#9776;</button>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li>
+          <a href="Service.html">Services</a>
+          <div class="dropdown-content">
+            <a href="Flooring_services.html">Flooring </a>
+            <a href="Epoxy_Flooring_Services.html">Epoxy Flooring</a>
+            <a href="Screeding_Service.html">Screeding </a>
+            <a href="Densification_Service.html">Densification</a>
+            <a href="Coating_Service.html">Coating</a>
+            <a href="Waterproofing_Service.html">Waterproofing</a>
+            <a href="Epoxy_077.html">Epoxy</a>
+          </div>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Sidebar -->
+<aside class="mobile-sidebar">
+  <span class="close-btn" onclick="closeSidebar()">×</span>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="About.html">About Us</a></li>
+    <li>
+      <a href="#" onclick="event.preventDefault(); toggleDropdown(this)">Services ▾</a>
+      <div class="dropdown-mobile">
+            <a href="Flooring_services.html">Flooring </a>
+            <a href="Epoxy_Flooring_Services.html">Epoxy Flooring</a>
+            <a href="Screeding_Service.html">Screeding </a>
+            <a href="Densification_Service.html">Densification</a>
+            <a href="Coating_Service.html">Coating</a>
+            <a href="Waterproofing_Service.html">Waterproofing</a>
+            <a href="Epoxy_077.html">Epoxy</a>
+      </div>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</aside>
+
+
+
+
+
+<!-- Contact Section -->
+<section id="contact" style="background:#f5f8ff; color:#fff; color:black; padding:80px 20px; font-family:'Poppins', sans-serif; position:relative; overflow:hidden;">
+
+ 
+
+  <div style="max-width:1200px; margin:auto;">
+<h2 style="font-size:2.8rem; color:#0d2f53; text-align:center; margin-bottom:50px; font-family:'Playfair Display', serif; font-weight:700; text-shadow:0 2px 4px rgba(0,0,0,0.1);">
+  Get in <span style="color:#00AEEF;">Touch</span>
+</h2>
+
+
+    <div style="display: flex; flex-wrap: wrap; gap:40px; justify-content: space-between;">
+      
+      <!-- Contact Info -->
+      <div style="flex:1; min-width:280px;">
+        <h3 style="color:black; margin-bottom:20px;">Contact Information</h3>
+        <p style="color:#444; margin-bottom:10px;">📞 +917383570508</p>
+        <p style="color:#444; margin-bottom:10px;">📧 info@specificengineers.com</p>
+        <p style="color:#444; margin-bottom:10px;">📍 Flat No.308, C3 Building, Purvarang Society, Gat No.571, Kesnand, Pune-412207, Maharashtra, India
+</p>
+
+        
+      </div>
+
+      <!-- Contact Form -->
+      <form style="flex:1; min-width:280px; display:flex; flex-direction:column; gap:15px;">
+        <input type="text" placeholder="Your Name" required style="padding:12px 15px; border-radius:6px; border:none; background:white; color:#444;">
+        <input type="email" placeholder="Your Email" required style="padding:12px 15px; border-radius:6px; border:none; background:-webkit-repeating-radial-gradient(); color:#444;">
+        <input type="text" placeholder="Phone Number" style="padding:12px 15px; border-radius:6px; border:none; background:white; color:#444;">
+        <textarea placeholder="Your Message" rows="5" style="padding:12px 15px; border-radius:6px; border:none; background:white; color:#444;"></textarea>
+        <button type="submit" style="background:#007aff; color:#fff; padding:12px; border:none; border-radius:6px; font-weight:600; cursor:pointer; transition:background 0.3s;" onmouseover="this.style.background='#e22d00'" onmouseout="this.style.background='#007aff'">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- Location Section -->
+<section id="location" style="background:#f5f8ff; color:#fff;; padding:80px 20px; font-family:'Poppins', sans-serif; color:#fff; position:relative; overflow:hidden;">
+  
+
+
+  <div style="max-width:1200px; margin:auto; text-align:center; position:relative; z-index:2;">
+    <h2 style="font-size:2.8rem; color:#0d2f53; text-align:center; margin-bottom:50px; font-family:'Playfair Display', serif; font-weight:700; ">
+  Our <span style="color:#00AEEF;">Location</span>
+</h2>
+
+    <p style="font-size:1rem; color:black; margin-bottom:40px;">
+      Visit us or find our operational site easily using the interactive map below.
+    </p>
+    
+    <!-- Google Map Embed -->
+    <div style="border-radius:12px; overflow:hidden; box-shadow:0 0 20px rgba(0,0,0,0.4); max-width:100%; height:450px;">
+      <iframe 
+       
+  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3782.5928932705467!2d74.0207628!3d18.5677894!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3482e147e95%3A0x806a9d47266ac75!2sSpecific%20Engineers!5e0!3m2!1sen!2sin!4v1721554200000!5m2!1sen!2sin" 
+
+
+
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- Floating Buttons -->
+<div style="position:fixed; bottom:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:12px;">
+  <a href="https://wa.me/+917383570508" target="_blank" style="background:#25D366; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #25D36699;">
+    <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" style="width:20px;"> WhatsApp
+  </a>
+  <a href="tel:+917383570508" style="background:#007aff; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #007aff99;">
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Call" style="width:20px;"> Call Now
+  </a>
+</div>
+
+
+
+<footer style="width:100%; background:linear-gradient(135deg, #0D0D0D, #1A1A1A, #000000); color:#fff; font-family:'Poppins', sans-serif; padding:60px 20px 40px; box-sizing:border-box; border-top:1px solid #222; position:relative; overflow:hidden;">
+
+  <!-- Footer Grid Container -->
+  <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:40px; animation:fadeIn 1.5s ease-out;">
+    
+    <!-- Logo & Description -->
+    <div style="line-height:1.7;">
+      <h2 style="font-size:1.8rem; color:#00AEEF; margin-bottom:15px; font-family:'Roboto', sans-serif;">Specific Engineers</h2>
+      <p style="color:#bbb; font-size:0.95rem;">Delivering industrial-grade flooring, waterproofing & coating solutions with excellence, durability, and nationwide reach.</p>
+    </div>
+
+    <!-- Services Links -->
+    <div>
+      <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:14px;">Our Services</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="Flooring_services.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Flooring Services</a></li>
+        <li><a href="Epoxy_Flooring_Services.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Epoxy Services</a></li>
+        <li><a href="Screeding_Service.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Screeding Service</a></li>
+        <li><a href="Waterproofing_Service.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Waterproofing</a></li>
+        <li><a href="Coating_Service.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Industrial Coating</a></li>
+        <li><a href="Epoxy_077.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Epoxy Flooring</a></li>
+        <li><a href="Densification_Service.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">• Densification</a></li>
+      </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:14px;">Quick Links</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="index.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">Home</a></li>
+        <li><a href="About.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">About Us</a></li>
+        <li><a href="Service.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">Services</a></li>
+        <li><a href="contact.html" style="color:#bbb; text-decoration:none;" onmouseover="this.style.color='#00AEEF'" onmouseout="this.style.color='#bbb'">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:14px;">Contact</h4>
+      <p style="color:#bbb; margin-bottom:10px; line-height:1.6;">📍 Flat No.308, C3 Building, Purvarang Society, Gat No.571, Kesnand, Pune-412207, Maharashtra, India</p>
+      <p style="color:#bbb; margin-bottom:10px;">📞 +91 73835 70508</p>
+      <p style="color:#bbb;">📧 info@specificengineers.com</p>
+    </div>
+  </div>
+
+  <!-- Divider Line -->
+  <div style="margin:50px auto 20px; width:90%; max-width:900px; height:1px; background:linear-gradient(to right, transparent, #444, transparent);"></div>
+
+  <!-- Copyright -->
+  <p style="font-size:0.9rem; color:#777; text-align:center;">&copy; 2025 Specific Engineers. All rights reserved.</p>
+
+  <!-- Scroll to Top Button -->
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    style="position:fixed; bottom:30px; right:30px; background:#00AEEF; color:#fff; border:none; padding:12px 16px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:999; box-shadow:0 0 10px #00AEEF; transition:background 0.3s;">
+    ↑
+  </button>
+
+  <!-- Fade-in Animation -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width: 600px) {
+      footer {
+        padding: 40px 15px 30px;
+      }
+    }
+  </style>
+</footer>
+
+
+
+
+
+<script>
+  const sidebar = document.querySelector('.mobile-sidebar');
+  const toggleBtn = document.querySelector('.sidebar-toggle');
+  const closeBtn = document.querySelector('.mobile-sidebar .close-btn');
+
+  function openSidebar() {
+    sidebar.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Open sidebar
+  toggleBtn.addEventListener('click', openSidebar);
+
+  // Close with close button
+  closeBtn.addEventListener('click', closeSidebar);
+
+  // Close on outside click
+  document.addEventListener('click', function (e) {
+    if (
+      sidebar.classList.contains('active') &&
+      !sidebar.contains(e.target) &&
+      !toggleBtn.contains(e.target)
+    ) {
+      closeSidebar();
+    }
+  });
+
+  // Close on ESC key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+      closeSidebar();
+    }
+  });
+</script>
+
+
+<!-- JS -->
+<script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const loader = document.getElementById("loader");
+      loader.style.transition = "all 2s ease";
+      loader.style.transform = "translateY(-100%)";
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 2000);
+    }, 2500);
+  });
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+  gsap.from(".feature-card", {
+    opacity: 0,
+    y: 40,
+    duration: 1.2,
+    stagger: 0.3,
+    ease: "power2.out"
+  });
+</script>
+<script>
+  function toggleDropdown(link) {
+    const dropdown = link.nextElementSibling;
+    dropdown.classList.toggle('open');
+  }
+
+  function closeSidebar() {
+    document.querySelector('.mobile-sidebar').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Optional: open sidebar toggle logic (if you use a button with .sidebar-toggle)
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        document.querySelector('.mobile-sidebar').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+  });
+</script>
+
+
+</body>
+</html>
