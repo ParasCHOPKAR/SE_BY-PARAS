@@ -279,7 +279,7 @@ nav.nav-menu { display: none; }
 
 <!-- Loader -->
 <section id="loader">
-  <img src="images/logo.png" alt="Specific Engineers Logo" />
+ <img src="source/LOGO.png"  alt="Specific Engineers Logo" />
   <h1>Solutions Built to Last</h1>
   <p>Reliable engineering, expert flooring, and waterproofing services tailored to your industrial and commercial needs.</p>
 </section>
@@ -314,7 +314,7 @@ nav.nav-menu { display: none; }
 <header class="main-header">
   <div class="container">
     <div class="logo">
-      <img src="images/logo.png" alt="Company Logo" />
+     <img src="source/LOGO.png"  alt="Company Logo" />
     </div>
     <button class="sidebar-toggle" onclick="document.querySelector('.mobile-sidebar').classList.add('active')">&#9776;</button>
     <nav class="nav-menu">
