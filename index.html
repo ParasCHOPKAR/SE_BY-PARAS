@@ -24,7 +24,7 @@
 body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
-  background: white;
+background:#f5f8ff; color:#fff;
   color: #444;
   scroll-behavior: smooth;
   font-size: 17px;
@@ -146,20 +146,20 @@ nav.nav-menu { display: none; }
   display: block;
   cursor: pointer;
 }
-
 /* Mobile Sidebar */
 .mobile-sidebar {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 260px;
+  width: 270px;
   height: 100%;
-  background: #222;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
-  padding: 25px 18px;
+  background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.6);
+  padding: 30px 20px;
   z-index: 2500;
-  transition: left 0.3s ease-in-out;
+  transition: left 0.4s ease-in-out;
   overflow-y: auto;
+  border-right: 1px solid linear-gradient(160deg, #0f2027, #203a43, #2c5364);
 }
 
 .mobile-sidebar.active {
@@ -167,12 +167,16 @@ nav.nav-menu { display: none; }
 }
 
 .mobile-sidebar .close-btn {
-  font-size: 24px;
+  font-size: 26px;
   cursor: pointer;
-  color: #007aff;
-  display: block;
+  color: #00AEEF;
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  transition: color 0.3s ease;
+}
+
+.mobile-sidebar .close-btn:hover {
+  color: #fff;
 }
 
 .mobile-sidebar ul {
@@ -181,47 +185,70 @@ nav.nav-menu { display: none; }
   margin: 0;
 }
 
+.mobile-sidebar li {
+  margin-bottom: 12px;
+}
+
 .mobile-sidebar li > a {
   font-weight: 600;
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 12px 15px;
+  border-radius: 8px;
   background: #2d2d2d;
-  color: #fff;
+  color: #f0f0f0;
   display: block;
-   font-family: 'Roboto', sans-serif;
-
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: background 0.3s, color 0.3s;
 }
 
 .mobile-sidebar li > a:hover {
-  background: #007aff22;
+  background: #00AEEF22;
   color: #00AEEF;
 }
 
+/* Dropdown Submenu */
 .dropdown-mobile {
   display: none;
-  margin-top: 8px;
-  margin-left: 10px;
-  padding-left: 10px;
+  margin-top: 10px;
+  margin-left: 12px;
+  padding-left: 12px;
   border-left: 2px solid #00AEEF;
-}
-
-.dropdown-mobile a {
-  display: block;
-  padding: 8px;
-  margin-bottom: 4px;
-  font-size: 0.95rem;
-  color: #ccc;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.dropdown-mobile a:hover {
-  background-color: #007aff22;
-  color: #00AEEF;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .dropdown-mobile.open {
   display: block;
+}
+
+.dropdown-mobile a {
+  display: block;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  text-decoration: none;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #252525, #1e1e1e);
+  box-shadow: inset 0 0 0 transparent, 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-mobile a:hover {
+  background: linear-gradient(145deg, #00aeef22, #1e1e1e);
+  color: #00AEEF;
+  box-shadow: inset 0 0 0 1px #00aeef, 0 3px 8px rgba(0, 174, 239, 0.3);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Desktop Navigation */
@@ -290,7 +317,7 @@ nav.nav-menu { display: none; }
 
   nav.nav-menu ul li:hover .dropdown-content {
     display: block;
-    animation: dropdownFade 0.3s ease-in-out;
+    animation: dropdownFade 0.5s ease-in-out;
   }
 
   .dropdown-content a {
@@ -393,18 +420,20 @@ nav.nav-menu { display: none; }
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="About.html">About Us</a></li>
-    <li>
-      <a href="#" onclick="event.preventDefault(); toggleDropdown(this)">Services ▾</a>
-      <div class="dropdown-mobile">
-            <a href="Flooring_services.html">Flooring </a>
-            <a href="Epoxy_Flooring_Services.html">Epoxy Flooring</a>
-            <a href="Screeding_Service.html">Screeding </a>
-            <a href="Densification_Service.html">Densification</a>
-            <a href="Coating_Service.html">Coating</a>
-            <a href="Waterproofing_Service.html">Waterproofing</a>
-            <a href="Epoxy_077.html">Epoxy</a>
-      </div>
-    </li>
+<li>
+  <a href="#" onclick="event.preventDefault(); toggleDropdown(this)">Services ▾</a>
+  <div class="dropdown-mobile">
+        <a href="Flooring_services.html">Flooring </a>
+        <a href="Epoxy_Flooring_Services.html">Epoxy Flooring</a>
+        <a href="Screeding_Service.html">Screeding </a>
+        <a href="Densification_Service.html">Densification</a>
+        <a href="Coating_Service.html">Coating</a>
+        <a href="Waterproofing_Service.html">Waterproofing</a>
+        <a href="Epoxy_077.html">Epoxy</a>
+        <a href="Service.html" style="font-weight:bold; color:#00AEEF;">All Services</a>
+  </div>
+</li>
+
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </aside>
@@ -917,7 +946,7 @@ nav.nav-menu { display: none; }
 
       <div class="elem" data-image="images/service1.jpg">
         <div class="overlay"></div>
-        <h2>Top-grade epoxy & waterproofing solutions</h2>
+        <h2>Advanced Coating & Leak-Proof Solutions</h2>
         <div class="small-text">Premium Materials</div>
       </div>
 
@@ -1059,71 +1088,66 @@ nav.nav-menu { display: none; }
 
 <!-- //////////////////////////// SECTION 5/////////////////// -->
 <!-- Call to Action Section -->
-<section style="background:#f5f8ff; color:#111; overflow:hidden; font-family:'Georgia', 'Times New Roman', serif; margin-top:-40px;">
-
+<section class="marquee-section" style="background:#f5f8ff; color:#111; overflow:hidden; font-family:'Georgia', 'Times New Roman', serif; margin-top:-150px;">
 
   <!-- Marquee Wrapper -->
   <div onmouseover="this.querySelectorAll('.marquee').forEach(m => m.style.animationPlayState='paused')" 
        onmouseout="this.querySelectorAll('.marquee').forEach(m => m.style.animationPlayState='running')" 
        style="white-space: nowrap; overflow: hidden; width: 100%; padding: 4vw 0; display: flex;">
 
-    <!-- Duplicate Marquee for Seamless Loop -->
+    <!-- Duplicate Marquees for Seamless Loop -->
     <div class="marquee" style="display: inline-block; white-space: nowrap; animation: scrollLeft 30s linear infinite; will-change: transform;">
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">EPOXY FLOORING</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">SCREEDING SERVICE</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">WATERPROOFING</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">INDUSTRIAL COATING</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">SURFACE PREPARATION</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">DENSIFICATION</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+      <!-- Repeated Content -->
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">EPOXY FLOORING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">SCREEDING SERVICE</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">WATERPROOFING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">INDUSTRIAL COATING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">SURFACE PREPARATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">DENSIFICATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
     </div>
 
-    <!-- Duplicate Marquee again for continuous loop -->
+    <!-- Duplicate Marquee -->
     <div class="marquee" style="display: inline-block; white-space: nowrap; animation: scrollLeft 30s linear infinite; will-change: transform;">
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">EPOXY FLOORING</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold; color:#000;display: inline-block;">SCREEDING SERVICE</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">WATERPROOFING</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">INDUSTRIAL COATING</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold;color:#000; display: inline-block;">SURFACE PREPARATION</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
-
-      <span style="font-size: 8.5vw; font-weight: bold; color:#000;display: inline-block;">DENSIFICATION</span>
-      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display: inline-block; margin: 1vw 2vw;"></div>
+      <!-- Same repeated spans and circles -->
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">EPOXY FLOORING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">SCREEDING SERVICE</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">WATERPROOFING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">INDUSTRIAL COATING</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">SURFACE PREPARATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
+      <span style="font-size: 8.5vw; font-weight: bold;color:#000;">DENSIFICATION</span>
+      <div style="height: 60px; width: 60px; border-radius: 50%; background-color: #007aff; display:inline-block; margin: 1vw 2vw;"></div>
     </div>
 
   </div>
 
-  <!-- Marquee Animation -->
-  <style>
+  <!-- Styles -->
+<style>
     @keyframes scrollLeft {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
     @media (max-width: 768px) {
-      section span {
+      .marquee-section {
+        margin-top: -30px !important; /* move it up a little on mobile */
+      }
+
+      .marquee-section span {
         font-size: 11vw !important;
       }
 
-      section div[style*="border-radius: 50%"] {
+      .marquee-section div[style*="border-radius: 50%"] {
         height: 30px !important;
         width: 30px !important;
         margin: 2vw !important;
@@ -1132,32 +1156,26 @@ nav.nav-menu { display: none; }
   </style>
 </section>
 
-
 <!-- ///////////////////////////// SECTION 6 //////////////////////// -->
 <!-- Our Projects Section -->
-<section style="background:#f5f8ff; color:#fff; color:black; padding:20px 20px; font-family:'Poppins', sans-serif; position:relative; overflow:hidden; margin-top:-20px;">
-
+<section class="recent-projects-section" style="background:#f5f8ff; color:black; padding:20px 20px; font-family:'Poppins', sans-serif; position:relative; overflow:hidden; margin-top:-20px;">
 
   <!-- Title -->
   <div style="max-width:1200px; margin:auto; text-align:center; position:relative; z-index:2;">
-<h2 class="expertise-heading" style="
-  font-size: 2.6rem;
-  margin-top: -10px; /* moved up */
-  margin-bottom: 16px; /* slightly reduced bottom space */
-  font-family: 'Playfair Display', sans-serif;
-  color: #0d2f53;
-">
-  Our <span style="color: #00AEEF;">Recent Projects</span>
-</h2>
-
-
+    <h2 class="expertise-heading" style="
+      font-size: 2.6rem;
+      margin-top: -10px;
+      margin-bottom: 16px;
+      font-family: 'Playfair Display', sans-serif;
+      color: #0d2f53;">
+      Our <span style="color: #00AEEF;">Recent Projects</span>
+    </h2>
 
     <!-- Projects Grid -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px;">
       
-      <!-- Project Card Template -->
+      <!-- Project Cards -->
       <div class="project-card">
-
         <img src="images/RECENT _01.jpg" alt="Project 1">
         <div class="overlay">
           <h4>Factory Epoxy Flooring</h4>
@@ -1194,63 +1212,77 @@ nav.nav-menu { display: none; }
 
   <!-- CSS Styling -->
   <style>
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      cursor: pointer;
-    }
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
 
-    .project-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-      transition: transform 0.4s ease;
-    }
+  .project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    transition: transform 0.4s ease;
+  }
 
-    .project-card .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transform: scale(1.05);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      padding: 20px;
-      text-align: center;
-    }
+  .project-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 20px;
+    text-align: center;
+  }
 
-    .project-card:hover .overlay {
-      opacity: 1;
-      transform: scale(1);
-    }
+  .project-card:hover .overlay {
+    opacity: 1;
+    transform: scale(1);
+  }
 
+  /* Image hover scale default (mobile and desktop) */
+  .project-card:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Increase scale on larger screens only */
+  @media (min-width: 769px) {
     .project-card:hover img {
-      transform: scale(1.05);
+      transform: scale(1.1); /* increased zoom for desktop */
     }
+  }
 
-    .overlay h4 {
-      color: #00AEEF;
-      margin-bottom: 5px;
-      font-size: 1.1rem;
-    }
+  .overlay h4 {
+    color: #00AEEF;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+  }
 
-    .overlay p {
-      font-size: 0.9rem;
-      color: #ddd;
+  .overlay p {
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+
+  @media (max-width: 768px) {
+    .recent-projects-section {
+      margin-top: 20px !important;
     }
-  </style>
+  }
+</style>
+
 </section>
-
 
 
 <!-- ////////////////////////////////// SECTION 777///////////// -->
@@ -1345,42 +1377,103 @@ nav.nav-menu { display: none; }
 <!-- Testimonials Section -->
 <section id="testimonials" style="background:linear-gradient(to right, #f5f8ff, #eef3fb); padding:60px 20px; font-family:'Poppins', sans-serif;">
   <div style="max-width:1200px; margin:auto; text-align:center;">
-
-      <h2 class="expertise-heading" style="
-      font-size:2.6rem;
-      margin-bottom:20px;
-       font-family:'Playfair Display', sans-serif;
-      color:#0d2f53;
-    ">
-      What<span style="color:#00AEEF;"> Our Clients Say</span>
+    <h2 style="font-size:2.6rem; margin-bottom:40px; font-family:'Playfair Display', serif; color:#0d2f53;">
+      What <span style="color:#00AEEF;">Our Clients Say</span>
     </h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px;">
-      
-      <!-- Testimonial 1 -->
-      <div style="backdrop-filter:blur(12px); background:rgba(255, 255, 255, 0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3); transition:transform 0.3s ease;">
-        <p style="font-style:italic; font-size:0.95rem; color:#111; margin-bottom:20px;">“Specific Engineers did an amazing job with our factory epoxy flooring. The finish is smooth, durable, and looks professional.”</p>
-        <h4 style="margin:0; font-weight:600; color:#0d2f53; font-size:0.9rem;">Rajesh Kumar</h4>
-        <p style="margin:5px 0 0; font-size:0.85rem; color:#222; font-weight:500;">Plant Manager</p>
+
+    <!-- Swiper Container -->
+    <div class="swiper testimonials-swiper" style="padding-bottom: 40px;">
+      <div class="swiper-wrapper">
+   
+        <!-- Slide 4–11 -->
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“Great team, timely execution, and a flawless floor finish. Highly reliable and professional.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Nikita Shah</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Interior Designer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“We’ve been using their coatings for years—zero complaints. Long-lasting and cost-effective.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Manish Verma</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Procurement Head</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“Specific Engineers gave us peace of mind during the renovation. Attention to detail is excellent.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Sneha Rao</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Project Lead</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“Epoxy coating has held up even in heavy machinery areas. Very satisfied with durability.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Ravi Chauhan</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Factory Head</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“Quick response, good pricing, and trustworthy team. Will hire again for future projects.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Divya Joshi</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Construction Coordinator</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“Appreciated their transparency and timely updates. Project ran smoothly from start to finish.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Karan Patel</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Site Manager</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“The team at Specific Engineers was cooperative, skilled, and delivered beyond expectations.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Deepak Thakur</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Warehouse Supervisor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide" style="display: flex;">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter:blur(12px); background:rgba(255,255,255,0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3);">
+            <p style="font-style:italic; font-size:0.95rem; color:#111;">“From consultation to execution, everything was flawless. Our facility now looks top-notch.”</p>
+            <div>
+              <h4 style="margin:0; font-weight:600; color:#0d2f53;">Sunita Reddy</h4>
+              <p style="margin:5px 0 0; font-size:0.85rem; color:#222;">Admin Director</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Testimonial 2 -->
-      <div style="backdrop-filter:blur(12px); background:rgba(255, 255, 255, 0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3); transition:transform 0.3s ease;">
-        <p style="font-style:italic; font-size:0.95rem; color:#111; margin-bottom:20px;">“We were impressed by the professionalism and quality workmanship. Specific Engineers delivered ahead of schedule and exceeded expectations.”</p>
-        <h4 style="margin:0; font-weight:600; color:#0d2f53; font-size:0.9rem;">Priya Mehta</h4>
-        <p style="margin:5px 0 0; font-size:0.85rem; color:#222; font-weight:500;">Facilities Head</p>
-      </div>
-
-      <!-- Testimonial 3 -->
-      <div style="backdrop-filter:blur(12px); background:rgba(255, 255, 255, 0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3); transition:transform 0.3s ease;">
-        <p style="font-style:italic; font-size:0.95rem; color:#111; margin-bottom:20px;">“The waterproofing solution provided by Specific Engineers has lasted perfectly through the monsoon. Highly recommended!”</p>
-        <h4 style="margin:0; font-weight:600; color:#0d2f53; font-size:0.9rem;">Amit Singh</h4>
-        <p style="margin:5px 0 0; font-size:0.85rem; color:#222; font-weight:500;">Operations Manager</p>
-      </div>
-
+      <!-- Arrows -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
 </section>
-
 
 <!-- Final CTA Banner -->
 <section style="background:#007aff; color:#fff; padding:60px 20px; font-family:'Poppins', sans-serif; text-align:center;">
@@ -1398,15 +1491,14 @@ nav.nav-menu { display: none; }
 </section>
 
 <!-- Floating Buttons -->
-<div style="position:fixed; bottom:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:12px;">
+<div style="position:fixed; bottom:60px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:12px;">
   <a href="https://wa.me/+917383570508" target="_blank" style="background:#25D366; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #25D36699;">
-    <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" style="width:20px;"> WhatsApp
+    <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" style="width:20px;"> 
   </a>
   <a href="tel:+917383570508" style="background:#007aff; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #007aff99;">
-    <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Call" style="width:20px;"> Call Now
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Call" style="width:20px;"> 
   </a>
 </div>
-
 
 
 
@@ -1415,11 +1507,18 @@ nav.nav-menu { display: none; }
   <!-- Footer Grid Container -->
   <div style="max-width:1200px; margin:auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:40px; animation:fadeIn 1.5s ease-out;">
     
-    <!-- Logo & Description -->
-    <div style="line-height:1.7;">
-      <h2 style="font-size:1.8rem; color:#00AEEF; margin-bottom:15px; font-family:'Roboto', sans-serif;">Specific Engineers</h2>
-      <p style="color:#bbb; font-size:0.95rem;">Delivering industrial-grade flooring, waterproofing & coating solutions with excellence, durability, and nationwide reach.</p>
-    </div>
+<!-- Logo & Description (Left Aligned & First Column) -->
+<!-- Logo & Description (Left Side) -->
+<div style="line-height:1.7; text-align: left; margin-right:60px; margin-top:-10px;">
+  <h2 style="font-size:1.8rem; color:#00AEEF; margin-bottom:15px; font-family:'Roboto', sans-serif;">
+    Specific Engineers
+  </h2>
+  <p style="color:#bbb; font-size:0.95rem; margin-bottom:40px;">
+    Delivering industrial-grade flooring, waterproofing & coating solutions with excellence, durability, and nationwide reach.
+  </p>
+</div>
+
+
 
     <!-- Services Links -->
     <div>
@@ -1460,14 +1559,16 @@ nav.nav-menu { display: none; }
   <!-- Divider Line -->
   <div style="margin:50px auto 20px; width:90%; max-width:900px; height:1px; background:linear-gradient(to right, transparent, #444, transparent);"></div>
 
-  <!-- Copyright -->
+   <!-- Copyright -->
   <p style="font-size:0.9rem; color:#777; text-align:center;">&copy; 2025 Specific Engineers. All rights reserved.</p>
 
+  <!-- Developed By -->
+  <p style="font-size:0.85rem; color:#555; text-align:center; margin-top:5px;">
+    Developed By <span style="color:#00AEEF; font-weight:600;">DW INNOVATION PVT. LTD.</span>
+  </p>
+
   <!-- Scroll to Top Button -->
-  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-    style="position:fixed; bottom:30px; right:30px; background:#00AEEF; color:#fff; border:none; padding:12px 16px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:999; box-shadow:0 0 10px #00AEEF; transition:background 0.3s;">
-    ↑
-  </button>
+
 
   <!-- Fade-in Animation -->
   <style>
@@ -1571,7 +1672,29 @@ nav.nav-menu { display: none; }
     }
   });
 </script>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+<!-- Swiper Init -->
+<script>
+  new Swiper('.testimonials-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2
+      },
+      1024: {
+        slidesPerView: 3
+      }
+    }
+  });
+</script>
 
 </body>
 </html>

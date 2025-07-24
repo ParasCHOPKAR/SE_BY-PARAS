@@ -1329,14 +1329,16 @@ nav.nav-menu { display: none; }
 </section>
 
 <!-- Floating Buttons -->
-<div style="position:fixed; bottom:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:12px;">
+<!-- Floating Buttons -->
+<div style="position:fixed; bottom:60px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:12px;">
   <a href="https://wa.me/+917383570508" target="_blank" style="background:#25D366; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #25D36699;">
-    <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" style="width:20px;"> WhatsApp
+    <img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp" style="width:20px;"> 
   </a>
   <a href="tel:+917383570508" style="background:#007aff; color:white; padding:12px 16px; border-radius:50px; display:flex; align-items:center; gap:8px; font-weight:600; font-family:'Poppins', sans-serif; text-decoration:none; box-shadow:0 0 10px #007aff99;">
-    <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Call" style="width:20px;"> Call Now
+    <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Call" style="width:20px;"> 
   </a>
 </div>
+
 
 
 
