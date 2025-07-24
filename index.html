@@ -422,61 +422,56 @@ nav.nav-menu { display: none; }
   overflow: hidden;
   padding: 0 20px;
   border-radius: 60px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   font-family: 'Roboto', sans-serif;
-
 ">
 
   <!-- Background Video -->
-<!-- Background Video -->
-<!-- Video Background -->
-<video autoplay muted loop playsinline style="
-  position: absolute;
-  top: 2%;
-  bottom: 2%; /* ✅ Added bottom gap */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 98%;
-  height: auto;
-  max-height: 96%;
-  object-fit: cover;
-  z-index: -3;
-  filter: brightness(0.6) contrast(1.2) saturate(1.2);
-  border-radius: 60px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
-">
-  <source src="images/COMPANY_HERO_02_video.mp4" type="video/mp4" />
-</video>
+  <video autoplay muted loop playsinline style="
+    position: absolute;
+    top: 2%;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    height: auto;
+    max-height: 96%;
+    object-fit: cover;
+    z-index: -3;
+    filter: brightness(0.6) contrast(1.2) saturate(1.2);
+    border-radius: 60px;
+  ">
+    <source src="images/COMPANY_HERO_02_video.mp4" type="video/mp4" />
+  </video>
 
-<!-- Gradient Overlays -->
-<div style="
-  position: absolute;
-  top: 2%;
-  bottom: 2%; /* ✅ Match bottom gap */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 98%;
-  height: auto;
-  max-height: 96%;
-  background: radial-gradient(circle at center, rgba(0,0,0,0.4) 10%, rgba(0,0,0,0.15) 80%);
-  z-index: -2;
-  border-radius: 60px;
-  backdrop-filter: blur(1.5px);
-"></div>
+  <!-- Gradient Overlays -->
+  <div style="
+    position: absolute;
+    top: 2%;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    height: auto;
+    max-height: 96%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.4) 10%, rgba(0,0,0,0.15) 80%);
+    z-index: -2;
+    border-radius: 60px;
+    backdrop-filter: blur(1.5px);
+  "></div>
 
-<div style="
-  position: absolute;
-  top: 2%;
-  bottom: 2%; /* ✅ Match bottom gap */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 98%;
-  height: auto;
-  max-height: 96%;
-  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15));
-  z-index: -1;
-  border-radius: 60px;
-"></div>
+  <div style="
+    position: absolute;
+    top: 2%;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    height: auto;
+    max-height: 96%;
+    background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15));
+    z-index: -1;
+    border-radius: 60px;
+  "></div>
 
   <!-- Content -->
   <div style="
@@ -486,8 +481,7 @@ nav.nav-menu { display: none; }
     animation: fadeIn 1.8s ease-out forwards;
   ">
     <h1 style="
-     font-family: 'Roboto', sans-serif;
-
+      font-family: 'Roboto', sans-serif;
       font-size: 3.6rem;
       font-weight: 800;
       line-height: 1.2;
@@ -510,9 +504,8 @@ nav.nav-menu { display: none; }
     ">
       From industrial flooring to precision coatings – we deliver quality that lasts.
     </p>
-    <a href="#services" style="
-     font-family: 'Roboto', sans-serif;
-
+    <a href="Service.html" style="
+      font-family: 'Roboto', sans-serif;
       font-size: 1rem;
       padding: 14px 34px;
       border-radius: 40px;
@@ -526,9 +519,8 @@ nav.nav-menu { display: none; }
       cursor: pointer;
       background: #007aff;
       color: white;
-      box-shadow: 0 4px 14px rgba(254, 50, 10, 0.25);
       text-decoration: none;
-    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(254, 50, 10, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 14px rgba(254, 50, 10, 0.25)'">
+    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 24px rgba(254, 50, 10, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
       View Services
     </a>
   </div>
@@ -555,7 +547,6 @@ nav.nav-menu { display: none; }
     }
   </style>
 </section>
-
 
 <!-- /////////////////////////////////// Section 2/////////////////
 /////////////////////////////////// Section 2///////////////// -->
@@ -760,7 +751,8 @@ nav.nav-menu { display: none; }
    <!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
     <!-- ///////////////////////////////////////////////////// CLIENTS IMAGES /////////////////////////////////////////// -->
 
-<section id="our-clients" style="padding: 60px 20px; background:#f5f8ff; color:#fff;; font-family: 'Poppins', sans-serif; color: #0d2f53; text-align: center;">
+<section id="our-clients" style="padding: 60px 0px; background:#f5f8ff; font-family: 'Poppins', sans-serif; color: #0d2f53; text-align: center; margin-top: -30px;">
+
   <style>
     @keyframes scrollRight {
       0% { transform: translateX(0); }
@@ -894,13 +886,15 @@ nav.nav-menu { display: none; }
 <!-- Load Urbanist Font -->
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
 
-<section style="background:#f5f8ff; color:#fff; width: 100%; font-family: 'Urbanist', sans-serif;">
+<section style="background:#f5f8ff; color:#111; width: 100%; font-family: 'Urbanist', sans-serif;">
 
   <!-- Section Heading -->
-<div class="trusted-heading">
-
-</div>
-
+  <div class="trusted-heading" style="text-align:center; padding: 40px 20px;">
+   
+      <h2 style="font-size: 2.4rem; font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 0px;">
+  WHY<span style="color:#00aeef;"> Clients Trust Us</span>
+  </h2>
+  </div>
 
   <!-- Fixed Hover Image -->
   <div id="fixed-image" style="
@@ -921,25 +915,25 @@ nav.nav-menu { display: none; }
   <div style="min-height: 100vh; width: 100%; padding-top: 10px; padding-bottom: 4vw;">
     <div id="elem-container">
 
-      <div class="elem" data-image="images/">
+      <div class="elem" data-image="images/service1.jpg">
         <div class="overlay"></div>
         <h2>Top-grade epoxy & waterproofing solutions</h2>
         <div class="small-text">Premium Materials</div>
       </div>
 
-      <div class="elem" data-image="images/">
+      <div class="elem" data-image="images/service2.jpg">
         <div class="overlay"></div>
         <h2>Certified experts with precise application</h2>
         <div class="small-text">Skilled Technicians</div>
       </div>
 
-      <div class="elem" data-image="images/">
+      <div class="elem" data-image="images/service3.jpg">
         <div class="overlay"></div>
         <h2>Projects delivered on or before deadlines</h2>
         <div class="small-text">Timely Execution</div>
       </div>
 
-      <div class="elem" data-image="images/">
+      <div class="elem" data-image="images/service4.jpg">
         <div class="overlay"></div>
         <h2>Tailored designs for unique spaces</h2>
         <div class="small-text">Customized Solutions</div>
@@ -969,79 +963,92 @@ nav.nav-menu { display: none; }
   </script>
 
   <!-- Styles -->
- <style>
-  .elem {
-    height: 150px;
-    width: 100%;
-    position: relative;
-    border-bottom: 1px solid #38383864;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 0 2vw;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-  }
-
-  .elem h2 {
-    font-size: 2.1vw;
-    font-weight: 800;
-    z-index: 9;
-    position: relative;
-    color: #444;
-  }
-
-  .elem .small-text {
-    margin-left: auto;
-    font-size: 0.95vw;
-    color: #444;
-    z-index: 9;
-    position: relative;
-    font-weight: 600;
-  }
-
-  .elem .overlay {
-    height: 100%;
-    width: 100%;
-    background-color: #007aff;
-    position: absolute;
-    left: 0;
-    top: -100%;
-    transition: all 0.25s ease;
-  }
-
-  /* ✅ Hover: change text color to black */
-  .elem:hover h2,
-  .elem:hover .small-text {
-    color: black !important;
-  }
-
-  @media (max-width: 768px) {
+  <style>
     .elem {
-      flex-direction: column;
-      align-items: flex-start;
-      height: auto;
-      padding: 4vw 4vw;
-      gap: 6px;
+      height: 150px;
+      width: 100%;
+      position: relative;
+      border-bottom: 1px solid #ccc;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 0 2vw;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .elem h2 {
-      font-size: 9vw;
+      font-size: 2.0vw;
+      font-weight: 800;
+      z-index: 9;
+      position: relative;
+      color: #333;
+      transition: color 0.3s;
     }
 
     .elem .small-text {
-      font-size: 3.9vw;
-      margin-left: 0;
-      color: black;
+      margin-left: auto;
+      font-size: 1vw;
+      color: #666;
+      z-index: 9;
+      position: relative;
+      font-weight: 600;
     }
 
-    #fixed-image {
-      display: none !important;
+    .elem .overlay {
+      height: 100%;
+      width: 100%;
+      background-color: #007aff;
+      position: absolute;
+      left: 0;
+      top: -100%;
+      transition: all 0.3s ease;
+      z-index: 1;
     }
-  }
-</style>
+
+    .elem:hover .overlay {
+      top: 0;
+    }
+
+    .elem:hover h2,
+    .elem:hover .small-text {
+      color: #fff !important;
+    }
+
+    @media (max-width: 768px) {
+      .elem {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 6vw 5vw;
+        gap: 10px;
+        border-bottom: 1px solid #aaa;
+        background: #fff;
+        margin: 10px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+
+      .elem h2 {
+        font-size: 6vw;
+        font-weight: 700;
+        color: #0d2f53;
+      }
+
+      .elem .small-text {
+        font-size: 4vw;
+        color: #007aff;
+        font-weight: 600;
+      }
+
+      #fixed-image {
+        display: none !important;
+      }
+    }
+  </style>
 
 </section>
+
 
 <!-- ////////////////////////// SECTION 444///////////////////// -->
 <!-- ////////////////////////// SECTION 444///////////////////// -->
@@ -1052,7 +1059,8 @@ nav.nav-menu { display: none; }
 
 <!-- //////////////////////////// SECTION 5/////////////////// -->
 <!-- Call to Action Section -->
-<section style="background:#f5f8ff; color:#fff; overflow:hidden; font-family:'Georgia', 'Times New Roman', serif;">
+<section style="background:#f5f8ff; color:#111; overflow:hidden; font-family:'Georgia', 'Times New Roman', serif; margin-top:-40px;">
+
 
   <!-- Marquee Wrapper -->
   <div onmouseover="this.querySelectorAll('.marquee').forEach(m => m.style.animationPlayState='paused')" 
@@ -1127,17 +1135,22 @@ nav.nav-menu { display: none; }
 
 <!-- ///////////////////////////// SECTION 6 //////////////////////// -->
 <!-- Our Projects Section -->
-<section style="background:#f5f8ff; color:#fff; color:black; padding:80px 20px; font-family:'Poppins', sans-serif; position:relative; overflow:hidden;">
+<section style="background:#f5f8ff; color:#fff; color:black; padding:20px 20px; font-family:'Poppins', sans-serif; position:relative; overflow:hidden; margin-top:-20px;">
+
+
   <!-- Title -->
   <div style="max-width:1200px; margin:auto; text-align:center; position:relative; z-index:2;">
-   <h2 class="expertise-heading" style="
-     
-      margin-bottom:20px;
-       font-family:'Playfair Display', sans-serif;
-      color:#0d2f53;
-    ">
-      Our <span style="color:#00AEEF;">Recent Projects</span>
-    </h2>
+<h2 class="expertise-heading" style="
+  font-size: 2.6rem;
+  margin-top: -10px; /* moved up */
+  margin-bottom: 16px; /* slightly reduced bottom space */
+  font-family: 'Playfair Display', sans-serif;
+  color: #0d2f53;
+">
+  Our <span style="color: #00AEEF;">Recent Projects</span>
+</h2>
+
+
 
     <!-- Projects Grid -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px;">
@@ -1330,131 +1343,42 @@ nav.nav-menu { display: none; }
 
 
 <!-- Testimonials Section -->
-<section style="background:#f5f8ff; padding:80px 20px; font-family:'Libre Baskerville', serif; text-align:center; overflow:hidden; position:relative;">
-  <div style="max-width:1200px; margin:auto; position:relative; z-index:2;">
-   <h2 class="expertise-heading" style="
-     
+<section id="testimonials" style="background:linear-gradient(to right, #f5f8ff, #eef3fb); padding:60px 20px; font-family:'Poppins', sans-serif;">
+  <div style="max-width:1200px; margin:auto; text-align:center;">
+
+      <h2 class="expertise-heading" style="
+      font-size:2.6rem;
       margin-bottom:20px;
        font-family:'Playfair Display', sans-serif;
       color:#0d2f53;
     ">
-      What Our<span style="color:#00AEEF;"> Client Says</span>
+      What<span style="color:#00AEEF;"> Our Clients Say</span>
     </h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px;">
+      
+      <!-- Testimonial 1 -->
+      <div style="backdrop-filter:blur(12px); background:rgba(255, 255, 255, 0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3); transition:transform 0.3s ease;">
+        <p style="font-style:italic; font-size:0.95rem; color:#111; margin-bottom:20px;">“Specific Engineers did an amazing job with our factory epoxy flooring. The finish is smooth, durable, and looks professional.”</p>
+        <h4 style="margin:0; font-weight:600; color:#0d2f53; font-size:0.9rem;">Rajesh Kumar</h4>
+        <p style="margin:5px 0 0; font-size:0.85rem; color:#222; font-weight:500;">Plant Manager</p>
+      </div>
 
-    <div class="testimonial-grid">
-      <!-- Card 1 -->
-      <div class="testimonial-card">
-        <div class="quote-icon">❝</div>
-        <p>"Specific Engineers did an amazing job with our factory epoxy flooring. The finish is smooth, durable, and looks professional."</p>
-        <h4>Rajesh Kumar</h4>
-        <span>Plant Manager, Sigma Pvt. Ltd.</span>
+      <!-- Testimonial 2 -->
+      <div style="backdrop-filter:blur(12px); background:rgba(255, 255, 255, 0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3); transition:transform 0.3s ease;">
+        <p style="font-style:italic; font-size:0.95rem; color:#111; margin-bottom:20px;">“We were impressed by the professionalism and quality workmanship. Specific Engineers delivered ahead of schedule and exceeded expectations.”</p>
+        <h4 style="margin:0; font-weight:600; color:#0d2f53; font-size:0.9rem;">Priya Mehta</h4>
+        <p style="margin:5px 0 0; font-size:0.85rem; color:#222; font-weight:500;">Facilities Head</p>
       </div>
-      <!-- Card 2 -->
-      <div class="testimonial-card">
-        <div class="quote-icon">❝</div>
-        <p>"Excellent waterproofing service! They resolved our leakage issue quickly and professionally. Highly recommended."</p>
-        <h4>Sneha Verma</h4>
-        <span>Homeowner, Mumbai</span>
+
+      <!-- Testimonial 3 -->
+      <div style="backdrop-filter:blur(12px); background:rgba(255, 255, 255, 0.25); padding:30px; border-radius:15px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.3); transition:transform 0.3s ease;">
+        <p style="font-style:italic; font-size:0.95rem; color:#111; margin-bottom:20px;">“The waterproofing solution provided by Specific Engineers has lasted perfectly through the monsoon. Highly recommended!”</p>
+        <h4 style="margin:0; font-weight:600; color:#0d2f53; font-size:0.9rem;">Amit Singh</h4>
+        <p style="margin:5px 0 0; font-size:0.85rem; color:#222; font-weight:500;">Operations Manager</p>
       </div>
-      <!-- Card 3 -->
-      <div class="testimonial-card">
-        <div class="quote-icon">❝</div>
-        <p>"Their screeding and coating work was flawless. The team was on time, polite, and completed everything to specification."</p>
-        <h4>Arun Mehta</h4>
-        <span>Project Engineer, BuildTech</span>
-      </div>
+
     </div>
   </div>
-
-  <style>
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .testimonial-card {
-      background: linear-gradient(to bottom right, #ffffff, #eaf4ff);
-      border-radius: 20px;
-      padding: 35px 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      font-family: 'Roboto', sans-serif;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0, 174, 239, 0.15);
-    }
-
-    .quote-icon {
-      font-size: 3rem;
-      color: #007BFF;
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      opacity: 0.15;
-      z-index: 0;
-    }
-
-    .testimonial-card p {
-      color: #333;
-      font-style: italic;
-      margin-bottom: 25px;
-      font-size: 1rem;
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-card h4 {
-      color: #0d2f53;
-      margin-bottom: 5px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-card span {
-      color: #666;
-      font-size: 0.9rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 480px) {
-      section h2 {
-        font-size: 2rem !important;
-      }
-
-      .testimonial-card {
-        padding: 30px 20px;
-        border-radius: 16px;
-      }
-
-      .testimonial-card p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-
-      .testimonial-card h4 {
-        font-size: 1rem;
-      }
-
-      .testimonial-card span {
-        font-size: 0.85rem;
-      }
-
-      .quote-icon {
-        font-size: 2.5rem;
-        top: 10px;
-        left: 15px;
-      }
-    }
-  </style>
 </section>
 
 
@@ -1467,7 +1391,7 @@ nav.nav-menu { display: none; }
     <p style="font-size:1.1rem; margin-bottom:35px; color:#fff; max-width:700px; margin-left:auto; margin-right:auto;">
       From industrial flooring to waterproofing solutions, we provide unmatched expertise and long-lasting results. Let's collaborate and bring your project to life.
     </p>
-    <a href="#contact" style="display:inline-block; background:#fff; color:#007aff; padding:14px 32px; border-radius:8px; font-size:1rem; font-weight:600; text-decoration:none; transition:all 0.3s ease;" onmouseover="this.style.background='#000'; this.style.color='#fff'" onmouseout="this.style.background='#fff'; this.style.color='#007aff'">
+    <a href="contact.html" style="display:inline-block; background:#fff; color:#007aff; padding:14px 32px; border-radius:8px; font-size:1rem; font-weight:600; text-decoration:none; transition:all 0.3s ease;" onmouseover="this.style.background='#000'; this.style.color='#fff'" onmouseout="this.style.background='#fff'; this.style.color='#007aff'">
       Get in Touch Now
     </a>
   </div>
@@ -1526,7 +1450,9 @@ nav.nav-menu { display: none; }
     <div>
       <h4 style="color:#00AEEF; font-size:1.1rem; margin-bottom:14px;">Contact</h4>
       <p style="color:#bbb; margin-bottom:10px; line-height:1.6;">📍 Flat No.308, C3 Building, Purvarang Society, Gat No.571, Kesnand, Pune-412207, Maharashtra, India</p>
-      <p style="color:#bbb; margin-bottom:10px;">📞 +91 73835 70508</p>
+   <p style="color:#bbb; margin-bottom:10px;">📞 +91 73835 70508</p>
+<p style="color:#bbb; margin-bottom:10px;">📞 +91 97660 69372</p>
+
       <p style="color:#bbb;">📧 info@specificengineers.com</p>
     </div>
   </div>
